@@ -1,0 +1,64 @@
+rs232W_fn01.cpp
+rs232_cfg01.cpp
+rs232api2.cpp
+file_manip01.cpp
+
+'6' --> +x
+'4' --> -x
+
+'8' --> +y
+'2' --> -y
+
+'Z' --> +z
+'z' --> -z
+
+'9' --> +x+y (1 quad.)
+'7' --> -x+y (2 quad.)
+'1' --> -x-y (3 quad.)
+'3' --> +x-y (4 quad.)
+
+
+
+10 SERVO ON 
+20 OVRD 60
+30 P2=P1
+40 P3=P1
+50 P4=P1
+60 P5=P1
+
+200  OPEN "COM1:" AS #1
+210  INPUT #1,C$,C2$
+220 IF C$ = "6" THEN P1.X=P1.X+5
+230 IF C$ = "4" THEN P1.X=P1.X-5
+240 IF C$ = "8" THEN P1.Y=P1.Y+5
+250 IF C$ = "2" THEN P1.Y=P1.Y-5
+260 IF C$ = "Z" THEN P1.Z=P1.Z+5
+270 IF C$ = "-Z" THEN P1.Z=P1.Z-5
+
+280 IF C$ = "9" THEN 
+290 P1.X=P1.X+5
+300 P1.Y=P1.Y+5
+310 ENDIF
+
+320 IF C$ = "7" THEN 
+330 P1.X=P1.X+5
+340 P1.Y=P1.Y-5
+350 ENDIF
+
+360 IF C$ = "1" THEN 
+370 P1.X=P1.X-5
+380 P1.Y=P1.Y-5
+390 ENDIF
+
+400 IF C$ = "3" THEN 
+410 P1.X=P1.X+5
+420 P1.Y=P1.Y-5
+430 ENDIF
+
+440 PRINT #1,P1
+   
+600 MOV P1-50
+610 IF C2$ = "PRN_COM1_ON_\r" THEN GOTO 210
+800 CLOSE #1
+
+1000 END
