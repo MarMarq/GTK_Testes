@@ -1,3 +1,7 @@
+// Para Compilar:
+// gcc -Wall -lm -g TimeOut_GtkDrawArea01_Cairo-R00.cpp -o Executavel `pkg-config --cflags gtk+-2.0 --libs gtk+-2.0 `
+
+
 	#include <stdlib.h>
 	#include <gtk/gtk.h>
 	#include <glib.h>
