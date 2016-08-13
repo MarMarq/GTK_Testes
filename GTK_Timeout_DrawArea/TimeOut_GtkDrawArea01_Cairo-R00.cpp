@@ -1,3 +1,6 @@
+// Para Compilar:
+// gcc -Wall -lm -g TimeOut_GtkDrawArea01_Cairo-R00.cpp -o Executavel `pkg-config --cflags gtk+-2.0 --libs gtk+-2.0 
+
 #include <stdlib.h>
 #include <gtk/gtk.h>
 #include <glib.h>
@@ -189,21 +192,21 @@ int main (int argc, char *argv[])
     gtk_init (&argc, &argv);
 
     builder = gtk_builder_new ();
-    gtk_builder_add_from_file (builder, "glade03b.glade", NULL);                        //Carrega as informaÁıes do projeto glade para o GtkBuilder
-    window          = GTK_WIDGET(gtk_builder_get_object (builder, "window1"));          //Retorna o objeto Window, para mostr·-lo mais tarde
-    darea           = GTK_WIDGET(gtk_builder_get_object (builder, "DrawingArea"));      //Retorna o objeto DrawingArea, para mostr·-lo mais tarde
-    togglebutton1   = GTK_WIDGET(gtk_builder_get_object (builder, "togglebutton1"));    //Retorna o objeto togglebutton1, para mostr·-lo mais tarde
-    button1         = GTK_WIDGET(gtk_builder_get_object (builder, "button1"));          //Retorna o objeto button1, para mostr·-lo mais tarde
-    button2         = GTK_WIDGET(gtk_builder_get_object (builder, "button2"));          //Retorna o objeto button2, para mostr·-lo mais tarde
-    button4         = GTK_WIDGET(gtk_builder_get_object (builder, "button4"));          //Retorna o objeto button4, para mostr·-lo mais tarde
-    button5         = GTK_WIDGET(gtk_builder_get_object (builder, "button5"));          //Retorna o objeto button5, para mostr·-lo mais tarde
+    gtk_builder_add_from_file (builder, "glade03b.glade", NULL);                        //Carrega as informa√ß√µes do projeto glade para o GtkBuilder
+    window          = GTK_WIDGET(gtk_builder_get_object (builder, "window1"));          //Retorna o objeto Window, para mostr√°-lo mais tarde
+    darea           = GTK_WIDGET(gtk_builder_get_object (builder, "DrawingArea"));      //Retorna o objeto DrawingArea, para mostr√°-lo mais tarde
+    togglebutton1   = GTK_WIDGET(gtk_builder_get_object (builder, "togglebutton1"));    //Retorna o objeto togglebutton1, para mostr√°-lo mais tarde
+    button1         = GTK_WIDGET(gtk_builder_get_object (builder, "button1"));          //Retorna o objeto button1, para mostr√°-lo mais tarde
+    button2         = GTK_WIDGET(gtk_builder_get_object (builder, "button2"));          //Retorna o objeto button2, para mostr√°-lo mais tarde
+    button4         = GTK_WIDGET(gtk_builder_get_object (builder, "button4"));          //Retorna o objeto button4, para mostr√°-lo mais tarde
+    button5         = GTK_WIDGET(gtk_builder_get_object (builder, "button5"));          //Retorna o objeto button5, para mostr√°-lo mais tarde
 
 
     gtk_window_set_title(GTK_WINDOW(window), "GTK DrawArea 02");
 
 
     gtk_builder_connect_signals (builder, NULL); //Conecta todos os eventos dentro do projeto do glade.
-    g_object_unref (G_OBJECT (builder)); //Exclui o GtkBuilder, pois n„o iremos mais us·-lo nesse exemplo.
+    g_object_unref (G_OBJECT (builder)); //Exclui o GtkBuilder, pois n√£o iremos mais us√°-lo nesse exemplo.
 
     g_signal_connect(G_OBJECT(togglebutton1)  , "toggled"        , G_CALLBACK(on_toggled)     ,   NULL);
 //    g_signal_connect_swapped(G_OBJECT(window) , "expose-event"   , G_CALLBACK(draw_darea)     ,G_OBJECT(darea));
@@ -219,7 +222,7 @@ int main (int argc, char *argv[])
     g_signal_connect_swapped(G_OBJECT(window) , "destroy"        ,
                     G_CALLBACK(gtk_main_quit)  , G_OBJECT(window));
 
-    g_timeout_add_full(G_PRIORITY_DEFAULT_IDLE,250,invalidate_drawing,darea,NULL);  // VariaÁ„o atualizada da linha acima :-)
+    g_timeout_add_full(G_PRIORITY_DEFAULT_IDLE,250,invalidate_drawing,darea,NULL);  // Varia√ß√£o atualizada da linha acima :-)
 
     gtk_widget_show_all(window);   //Mostra a janela com seus objetos
     gtk_main ();
